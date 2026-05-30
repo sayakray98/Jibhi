@@ -7,6 +7,8 @@ import Packages from './components/Packages/Packages';
 import PhotoGallery from './components/PhotoGallery/PhotoGallery';
 import Blog from './components/Blog/Blog';
 import Contact from './components/Contact/Contact';
+import TermsAndConditions from './components/Legal/TermsAndConditions';
+import PrivacyPolicy from './components/Legal/PrivacyPolicy';
 
 import {
   createHashRouter,
@@ -25,6 +27,8 @@ const router = createHashRouter([
       { path: "gallery", element: <PhotoGallery /> },
       { path: "blog", element: <Blog /> },
       { path: "contact", element: <Contact /> },
+      { path: "terms", element: <TermsAndConditions /> },
+      { path: "privacy", element: <PrivacyPolicy /> },
     ],
   },
 ]);

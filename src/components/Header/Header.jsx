@@ -23,6 +23,9 @@ export default function Header() {
   const dropdownTimeout = useRef(null);
   const headerRef = useRef(null);
 
+  // Pages that have a light background at top need solid header
+  const needsSolidBg = /^\/(properties|property\/|packages|gallery|blog|contact|terms|privacy)/.test(location.pathname);
+
   // Close everything on route change
   useEffect(() => {
     setMobileOpen(false);
@@ -91,7 +94,7 @@ export default function Header() {
     <>
       <header
         ref={headerRef}
-        className={`header${scrolled ? " header--scrolled" : ""}${mobileOpen ? " header--mobile-open" : ""}`}
+        className={`header${scrolled || needsSolidBg ? " header--scrolled" : ""}${mobileOpen ? " header--mobile-open" : ""}`}
       >
         <div className="header__inner">
           {/* Logo */}
@@ -159,7 +162,6 @@ export default function Header() {
                 className={({ isActive }) =>
                   `header__nav-link header__nav-link--trigger${isActive ? " active" : ""}${activeDropdown === "properties" ? " open" : ""}`
                 }
-                onMouseEnter={() => handleDropdownEnter("properties")}
               >
                 Properties
                 <svg className="header__chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">

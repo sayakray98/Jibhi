@@ -1,4 +1,4 @@
-﻿import React from "react";
+import React from "react";
 import { NavLink } from "react-router-dom";
 import "./Footer.css";
 
@@ -92,9 +92,9 @@ export default function Footer() {
           <div className="footer__bottom">
             <p className="footer__copyright">© {new Date().getFullYear()} Jibhi Stays. All rights reserved.</p>
             <div className="footer__bottom-links">
-              <a href="#" className="footer__bottom-link">Terms & Conditions</a>
+              <NavLink to="/terms" className="footer__bottom-link">Terms & Conditions</NavLink>
               <span className="footer__bottom-divider">|</span>
-              <a href="#" className="footer__bottom-link">Privacy Policy</a>
+              <NavLink to="/privacy" className="footer__bottom-link">Privacy Policy</NavLink>
             </div>
           </div>
         </div>
