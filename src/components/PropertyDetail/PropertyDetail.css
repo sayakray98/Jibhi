@@ -1,0 +1,652 @@
+﻿/* ═══════════════════════════════════════════
+   Property Detail Page
+   ═══════════════════════════════════════════ */
+
+.property-detail-not-found {
+  text-align: center;
+  padding: 120px 20px;
+  font-family: "Inter", sans-serif;
+}
+
+.property-detail-not-found h2 {
+  font-family: "LarkenMedium", serif;
+  font-size: 2rem;
+  color: #1F3A36;
+}
+
+.property-detail-not-found p {
+  color: #7a8a86;
+  margin: 8px 0 24px;
+}
+
+.property-detail-not-found__link {
+  color: #DCC7AA;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* ── Breadcrumb ── */
+.property-detail__breadcrumb-bar {
+  background: #f7f2eb;
+  padding: 100px 20px 20px;
+  border-bottom: 1px solid #d4c4ad;
+}
+
+.property-detail__breadcrumb-container {
+  max-width: 1450px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: "Inter", sans-serif;
+  font-size: 0.85rem;
+}
+
+.property-detail__breadcrumb-container a {
+  color: #DCC7AA;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.property-detail__breadcrumb-container a:hover {
+  color: #c4ad90;
+}
+
+.property-detail__breadcrumb-container span {
+  color: #7a8a86;
+}
+
+.property-detail__breadcrumb-container .current {
+  color: #3d4f4b;
+  font-weight: 500;
+}
+
+/* ── Gallery ── */
+.property-detail__gallery {
+  padding: 24px 20px 0;
+  background: #fff;
+}
+
+.property-detail__gallery-container {
+  max-width: 1450px;
+  margin: 0 auto;
+}
+
+.property-detail__gallery-main {
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.property-detail__gallery-main-img {
+  width: 100%;
+  height: 480px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.property-detail__gallery-thumbs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.property-detail__gallery-thumb {
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+  border: 3px solid transparent;
+  transition: border-color 0.25s, opacity 0.25s;
+}
+
+.property-detail__gallery-thumb img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  display: block;
+}
+
+.property-detail__gallery-thumb:hover {
+  opacity: 0.85;
+}
+
+.property-detail__gallery-thumb--active {
+  border-color: #DCC7AA;
+}
+
+.property-detail__gallery-thumb-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-family: "Inter", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+/* ── Main Layout ── */
+.property-detail__main {
+  padding: 40px 20px 60px;
+  background: #fff;
+}
+
+.property-detail__main-container {
+  max-width: 1450px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 40px;
+  align-items: start;
+}
+
+/* ── Content ── */
+.property-detail__header {
+  padding-bottom: 28px;
+  border-bottom: 1px solid #d4c4ad;
+  margin-bottom: 28px;
+}
+
+.property-detail__header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+.property-detail__name {
+  font-family: "LarkenMedium", serif;
+  font-size: 2rem;
+  color: #1F3A36;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.property-detail__rating-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #f7f2eb;
+  padding: 8px 14px;
+  border-radius: 12px;
+  flex-shrink: 0;
+}
+
+.property-detail__rating-value {
+  font-family: "Inter", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #1F3A36;
+}
+
+.property-detail__rating-count {
+  font-family: "Inter", sans-serif;
+  font-size: 0.8rem;
+  color: #7a8a86;
+}
+
+.property-detail__location {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: "Inter", sans-serif;
+  font-size: 0.9rem;
+  color: #7a8a86;
+  margin: 0 0 16px;
+}
+
+.property-detail__tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.property-detail__tag {
+  font-family: "Inter", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  background: linear-gradient(135deg, #f7f2eb, #ede6dc);
+  color: #DCC7AA;
+  padding: 6px 16px;
+  border-radius: 20px;
+  border: 1px solid #d4c4ad;
+}
+
+.property-detail__stats {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.property-detail__stat {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: "Inter", sans-serif;
+  font-size: 0.9rem;
+  color: #3d4f4b;
+  background: #ede6dc;
+  padding: 10px 18px;
+  border-radius: 12px;
+}
+
+/* ── Sections ── */
+.property-detail__section {
+  margin-bottom: 36px;
+}
+
+.property-detail__section-title {
+  font-family: "LarkenMedium", serif;
+  font-size: 1.4rem;
+  color: #1F3A36;
+  margin: 0 0 16px;
+}
+
+.property-detail__description {
+  font-family: "Inter", sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: #3d4f4b;
+  margin: 0 0 20px;
+}
+
+.property-detail__highlights {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.property-detail__highlight {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: "Inter", sans-serif;
+  font-size: 0.9rem;
+  color: #3d4f4b;
+}
+
+/* Amenities */
+.property-detail__amenities {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.property-detail__amenity {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  background: #ede6dc;
+  border-radius: 12px;
+  transition: background 0.2s;
+}
+
+.property-detail__amenity:hover {
+  background: #ddd5c8;
+}
+
+.property-detail__amenity-icon {
+  font-size: 1.3rem;
+}
+
+.property-detail__amenity-label {
+  font-family: "Inter", sans-serif;
+  font-size: 0.88rem;
+  color: #3d4f4b;
+}
+
+/* ── Booking Sidebar ── */
+.property-detail__sidebar {
+  position: sticky;
+  top: 24px;
+}
+
+.property-detail__booking-card {
+  background: #fff;
+  border: 1px solid #d4c4ad;
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+}
+
+.property-detail__booking-price {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.property-detail__booking-current {
+  font-family: "LarkenMedium", serif;
+  font-size: 1.8rem;
+  color: #1F3A36;
+}
+
+.property-detail__booking-unit {
+  font-family: "Inter", sans-serif;
+  font-size: 0.9rem;
+  color: #7a8a86;
+}
+
+.property-detail__booking-original {
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  color: #9aaa97;
+  text-decoration: line-through;
+  margin-left: 4px;
+}
+
+.property-detail__booking-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.property-detail__booking-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.property-detail__booking-field label {
+  font-family: "Inter", sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #7a8a86;
+}
+
+.property-detail__booking-field input {
+  font-family: "Inter", sans-serif;
+  font-size: 0.88rem;
+  padding: 10px 12px;
+  border: 1px solid #d4c4ad;
+  border-radius: 10px;
+  outline: none;
+  color: #1F3A36;
+  background: #ede6dc;
+  transition: border-color 0.2s;
+}
+
+.property-detail__booking-field input:focus {
+  border-color: #DCC7AA;
+}
+
+.property-detail__booking-guests {
+  margin-bottom: 20px;
+}
+
+.property-detail__booking-guests label {
+  font-family: "Inter", sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #7a8a86;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.property-detail__booking-guest-control {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  border: 1px solid #d4c4ad;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #ede6dc;
+  margin-bottom: 6px;
+}
+
+.property-detail__booking-guest-control button {
+  width: 44px;
+  height: 42px;
+  border: none;
+  background: transparent;
+  font-size: 1.1rem;
+  color: #1F3A36;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.property-detail__booking-guest-control button:hover:not(:disabled) {
+  background: #d4c4ad;
+}
+
+.property-detail__booking-guest-control button:disabled {
+  color: #ccc;
+  cursor: not-allowed;
+}
+
+.property-detail__booking-guest-control span {
+  flex: 1;
+  text-align: center;
+  font-family: "Inter", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1F3A36;
+}
+
+.property-detail__booking-guest-max {
+  font-family: "Inter", sans-serif;
+  font-size: 0.75rem;
+  color: #7a8a86;
+}
+
+.property-detail__booking-summary {
+  border-top: 1px solid #d4c4ad;
+  padding-top: 16px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.property-detail__booking-row {
+  display: flex;
+  justify-content: space-between;
+  font-family: "Inter", sans-serif;
+  font-size: 0.88rem;
+  color: #3d4f4b;
+}
+
+.property-detail__booking-total {
+  display: flex;
+  justify-content: space-between;
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1F3A36;
+  padding-top: 12px;
+  border-top: 1px solid #d4c4ad;
+}
+
+.property-detail__booking-btn {
+  width: 100%;
+  padding: 16px;
+  background: #1F3A36;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.25s, transform 0.15s;
+}
+
+.property-detail__booking-btn:hover {
+  background: #2a4f4a;
+  transform: translateY(-1px);
+}
+
+.property-detail__booking-btn:active {
+  transform: translateY(0);
+}
+
+/* ── Similar Properties ── */
+.property-detail__similar {
+  background: #ede6dc;
+  padding: 60px 20px;
+}
+
+.property-detail__similar-container {
+  max-width: 1450px;
+  margin: 0 auto;
+}
+
+.property-detail__similar-title {
+  font-family: "LarkenMedium", serif;
+  font-size: 1.8rem;
+  color: #1F3A36;
+  margin: 0 0 28px;
+  text-align: center;
+}
+
+.property-detail__similar-card {
+  display: block;
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.property-detail__similar-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+}
+
+.property-detail__similar-card-img {
+  overflow: hidden;
+}
+
+.property-detail__similar-card-img img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.property-detail__similar-card:hover .property-detail__similar-card-img img {
+  transform: scale(1.05);
+}
+
+.property-detail__similar-card-info {
+  padding: 18px;
+}
+
+.property-detail__similar-card-info h3 {
+  font-family: "LarkenMedium", serif;
+  font-size: 1.1rem;
+  color: #1F3A36;
+  margin: 0 0 4px;
+}
+
+.property-detail__similar-card-info p {
+  font-family: "Inter", sans-serif;
+  font-size: 0.8rem;
+  color: #7a8a86;
+  margin: 0 0 12px;
+}
+
+.property-detail__similar-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.property-detail__similar-card-price {
+  font-family: "Inter", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #1F3A36;
+}
+
+.property-detail__similar-card-rating {
+  font-family: "Inter", sans-serif;
+  font-size: 0.85rem;
+  color: #DCC7AA;
+  font-weight: 600;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .property-detail__main-container {
+    grid-template-columns: 1fr;
+  }
+
+  .property-detail__sidebar {
+    position: static;
+  }
+
+  .property-detail__gallery-main-img {
+    height: 360px;
+  }
+
+  .property-detail__amenities {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .property-detail__name {
+    font-size: 1.5rem;
+  }
+
+  .property-detail__gallery-main-img {
+    height: 260px;
+  }
+
+  .property-detail__gallery-thumbs {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .property-detail__gallery-thumb img {
+    height: 80px;
+  }
+
+  .property-detail__header-top {
+    flex-direction: column;
+  }
+
+  .property-detail__stats {
+    gap: 10px;
+  }
+
+  .property-detail__stat {
+    padding: 8px 14px;
+    font-size: 0.82rem;
+  }
+
+  .property-detail__amenities {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .property-detail__booking-fields {
+    grid-template-columns: 1fr;
+  }
+
+  .property-detail__main {
+    padding: 24px 16px 40px;
+  }
+}

@@ -1,0 +1,341 @@
+﻿/* ═══════════════════════════════════════════
+   Photo Gallery Page
+   ═══════════════════════════════════════════ */
+
+/* ── Hero ── */
+.gallery-hero {
+  background: linear-gradient(160deg, #1F3A36 0%, #162e2a 100%);
+  padding: 130px 24px 60px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.gallery-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url("https://images.unsplash.com/photo-1537225228614-56cc3556d7ed?w=1400&h=600&fit=crop") center/cover;
+  opacity: 0.18;
+}
+
+.gallery-hero__container {
+  max-width: 1450px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.gallery-hero__title {
+  font-family: "LarkenMedium", serif;
+  font-size: 2.8rem;
+  color: #fff;
+  margin: 0 0 10px;
+  letter-spacing: -0.02em;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.3);
+}
+
+.gallery-hero__subtitle {
+  font-family: "Inter", sans-serif;
+  font-size: 1.05rem;
+  color: rgba(255,255,255,0.75);
+  margin: 0 0 16px;
+}
+
+.gallery-hero__breadcrumb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: "Inter", sans-serif;
+  font-size: 0.88rem;
+}
+
+.gallery-hero__breadcrumb a {
+  color: #DCC7AA;
+  text-decoration: none;
+}
+
+.gallery-hero__breadcrumb span {
+  color: rgba(255,255,255,0.5);
+}
+
+.gallery-hero__breadcrumb .current {
+  color: rgba(255,255,255,0.8);
+}
+
+/* ── Filter Tabs ── */
+.gallery-tabs {
+  background: #fff;
+  padding: 16px 20px;
+  border-bottom: 1px solid #d4c4ad;
+  position: sticky;
+  top: 0;
+  z-index: 90;
+}
+
+.gallery-tabs__container {
+  max-width: 1450px;
+  margin: 0 auto;
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.gallery-tabs__btn {
+  font-family: "Inter", sans-serif;
+  font-size: 0.88rem;
+  font-weight: 500;
+  padding: 10px 24px;
+  border-radius: 24px;
+  border: 1px solid #d4c4ad;
+  background: #ede6dc;
+  color: #3d4f4b;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.gallery-tabs__btn:hover {
+  background: #ddd5c8;
+  border-color: #DCC7AA;
+}
+
+.gallery-tabs__btn--active {
+  background: #1F3A36;
+  color: #fff;
+  border-color: #1F3A36;
+}
+
+.gallery-tabs__btn--active:hover {
+  background: #2a4f4a;
+  border-color: #2a4f4a;
+}
+
+/* ── Masonry Grid ── */
+.gallery-masonry-section {
+  background: #ede6dc;
+  padding: 40px 20px 60px;
+}
+
+.gallery-masonry-section__container {
+  max-width: 1450px;
+  margin: 0 auto;
+}
+
+.gallery-masonry {
+  columns: 3;
+  column-gap: 18px;
+}
+
+.gallery-masonry__item {
+  break-inside: avoid;
+  margin-bottom: 18px;
+  border-radius: 14px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+}
+
+.gallery-masonry__item img {
+  width: 100%;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.gallery-masonry__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(26, 26, 26, 0);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.35s ease;
+}
+
+.gallery-masonry__view-text {
+  font-family: "LarkenMedium", serif;
+  font-size: 1.2rem;
+  color: #fff;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.35s, transform 0.35s;
+}
+
+.gallery-masonry__property {
+  font-family: "Inter", sans-serif;
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.8);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.35s 0.05s, transform 0.35s 0.05s;
+  margin-top: 4px;
+}
+
+.gallery-masonry__item:hover img {
+  transform: scale(1.08);
+}
+
+.gallery-masonry__item:hover .gallery-masonry__overlay {
+  background: rgba(26, 26, 26, 0.45);
+}
+
+.gallery-masonry__item:hover .gallery-masonry__view-text,
+.gallery-masonry__item:hover .gallery-masonry__property {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Lightbox Modal ── */
+.gallery-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: rgba(0, 0, 0, 0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: lightboxFadeIn 0.25s ease;
+  outline: none;
+}
+
+@keyframes lightboxFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.gallery-lightbox__inner {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gallery-lightbox__img {
+  max-width: 85vw;
+  max-height: 80vh;
+  object-fit: contain;
+  border-radius: 8px;
+  animation: lightboxSlide 0.3s ease;
+}
+
+@keyframes lightboxSlide {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.gallery-lightbox__close {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  background: rgba(255, 255, 255, 0.12);
+  border: none;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s;
+  z-index: 10;
+}
+
+.gallery-lightbox__close:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.gallery-lightbox__nav {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.12);
+  border: none;
+  border-radius: 50%;
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s;
+  z-index: 10;
+}
+
+.gallery-lightbox__nav:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.gallery-lightbox__nav--prev {
+  left: 24px;
+}
+
+.gallery-lightbox__nav--next {
+  right: 24px;
+}
+
+.gallery-lightbox__caption {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-family: "Inter", sans-serif;
+  color: #fff;
+  font-size: 0.9rem;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 10px 24px;
+  border-radius: 24px;
+  backdrop-filter: blur(8px);
+}
+
+.gallery-lightbox__counter {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.82rem;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .gallery-masonry {
+    columns: 2;
+  }
+
+  .gallery-hero__title {
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .gallery-hero {
+    padding: 100px 16px 32px;
+  }
+
+  .gallery-hero__title {
+    font-size: 1.8rem;
+  }
+
+  .gallery-masonry {
+    columns: 1;
+  }
+
+  .gallery-masonry-section {
+    padding: 24px 16px 40px;
+  }
+
+  .gallery-lightbox__nav {
+    width: 40px;
+    height: 40px;
+  }
+
+  .gallery-lightbox__nav--prev {
+    left: 12px;
+  }
+
+  .gallery-lightbox__nav--next {
+    right: 12px;
+  }
+}

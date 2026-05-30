@@ -1,0 +1,319 @@
+﻿/* ═══════════════════════════════════════════
+   About Section — Home Page
+   ═══════════════════════════════════════════ */
+
+/* ── Shared ── */
+.about-section__tag {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #DCC7AA;
+  margin-bottom: 10px;
+}
+
+.about-section__title {
+  font-family: 'LarkenMedium', Georgia, serif;
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  color: #1F3A36;
+  margin: 0 0 20px;
+  line-height: 1.2;
+}
+
+.about-section__text {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: #3d4f4b;
+  margin: 0 0 16px;
+}
+
+/* ── About Jibhi ── */
+.about-section {
+  padding: 80px 24px;
+  background: #fff;
+}
+
+.about-section__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.about-section__image {
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+}
+
+.about-section__image img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s ease;
+}
+
+.about-section__image:hover img {
+  transform: scale(1.04);
+}
+
+/* ── About Resort ── */
+.about-resort {
+  padding: 80px 24px;
+  background: #f7f2eb;
+}
+
+.about-resort__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.about-resort__image {
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+}
+
+.about-resort__image img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s ease;
+}
+
+.about-resort__image:hover img {
+  transform: scale(1.04);
+}
+
+.about-resort__stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 28px;
+  padding-top: 28px;
+  border-top: 1px solid #d4c4ad;
+}
+
+.about-resort__stat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.about-resort__stat-num {
+  font-family: 'LarkenMedium', Georgia, serif;
+  font-size: 1.6rem;
+  color: #DCC7AA;
+  font-weight: 700;
+}
+
+.about-resort__stat-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  color: #7a8a86;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+}
+
+/* ── Why Choose Us ── */
+.why-choose {
+  padding: 80px 24px;
+  background: #fff;
+}
+
+.why-choose__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.why-choose__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.why-choose__card {
+  background: #f7f2eb;
+  border-radius: 16px;
+  padding: 32px 24px;
+  text-align: center;
+  border: 1.5px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.why-choose__card:hover {
+  border-color: #DCC7AA;
+  transform: translateY(-6px);
+  box-shadow: 0 12px 36px rgba(220, 199, 170, 0.12);
+}
+
+.why-choose__icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.why-choose__card-title {
+  font-family: 'LarkenMedium', Georgia, serif;
+  font-size: 1.1rem;
+  color: #1F3A36;
+  margin: 0 0 10px;
+}
+
+.why-choose__card-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  color: #7a8a86;
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* ── Nearby Attractions ── */
+.attractions {
+  padding: 80px 24px;
+  background: #ede6dc;
+}
+
+.attractions__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.attractions__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.attractions__card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: #fff;
+  padding: 20px 24px;
+  border-radius: 14px;
+  border: 1.5px solid #d4c4ad;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.attractions__card:hover {
+  border-color: #DCC7AA;
+  background: #f7f2eb;
+  transform: translateX(4px);
+}
+
+.attractions__emoji {
+  font-size: 1.6rem;
+  flex-shrink: 0;
+}
+
+.attractions__info {
+  flex: 1;
+  min-width: 0;
+}
+
+.attractions__name {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1F3A36;
+  margin: 0 0 2px;
+}
+
+.attractions__dist {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.78rem;
+  color: #7a8a86;
+}
+
+.attractions__arrow {
+  flex-shrink: 0;
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: all 0.25s ease;
+}
+
+.attractions__card:hover .attractions__arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .about-section__inner,
+  .about-resort__inner {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .about-section__image img,
+  .about-resort__image img {
+    height: 300px;
+  }
+
+  .about-resort__stats {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .why-choose__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .attractions__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .about-section,
+  .about-resort,
+  .why-choose,
+  .attractions {
+    padding: 60px 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  .about-resort__stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .why-choose__grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .attractions__grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .about-section__image img,
+  .about-resort__image img {
+    height: 240px;
+  }
+
+  .about-section,
+  .about-resort,
+  .why-choose,
+  .attractions {
+    padding: 48px 16px;
+  }
+}
