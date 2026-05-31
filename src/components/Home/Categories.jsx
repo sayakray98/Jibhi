@@ -16,7 +16,7 @@ export default function Categories() {
         <div className="cat-section__grid">
           {categories.map((cat) => (
             <a key={cat.slug} className="cat-card" href={`#${cat.slug}`}>
-              <div className="cat-card__emoji">{cat.icon}</div>
+              <div className="cat-card__emoji"><i className={cat.icon}></i></div>
               <div className="cat-card__info">
                 <span className="cat-card__name">{cat.name}</span>
                 <span className="cat-card__count">{cat.count} properties</span>

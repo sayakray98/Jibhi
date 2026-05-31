@@ -274,16 +274,16 @@ export const destinations = [
 ];
 
 export const categories = [
-  { name: "Private Pool", slug: "pool", icon: "🏊", count: 85 },
-  { name: "Pet Friendly", slug: "pet-friendly", icon: "🐾", count: 120 },
-  { name: "Mountain View", slug: "mountain-view", icon: "🏔️", count: 200 },
-  { name: "Riverside", slug: "riverside", icon: "🏞️", count: 65 },
-  { name: "Luxury Villas", slug: "luxury", icon: "🏛️", count: 150 },
-  { name: "Couples Retreat", slug: "couples", icon: "💑", count: 90 },
-  { name: "Family Getaway", slug: "family", icon: "👨‍👩‍👧‍👦", count: 175 },
-  { name: "Treehouses", slug: "treehouse", icon: "🌳", count: 20 },
-  { name: "Heritage Stays", slug: "heritage", icon: "🏰", count: 45 },
-  { name: "Glamping", slug: "glamping", icon: "⛺", count: 30 },
+  { name: "Private Pool", slug: "pool", icon: "lni lni-water-drop-1", count: 85 },
+  { name: "Pet Friendly", slug: "pet-friendly", icon: "lni lni-heart", count: 120 },
+  { name: "Mountain View", slug: "mountain-view", icon: "lni lni-mountains-2", count: 200 },
+  { name: "Riverside", slug: "riverside", icon: "lni lni-island-2", count: 65 },
+  { name: "Luxury Villas", slug: "luxury", icon: "lni lni-crown-3", count: 150 },
+  { name: "Couples Retreat", slug: "couples", icon: "lni lni-diamond-1", count: 90 },
+  { name: "Family Getaway", slug: "family", icon: "lni lni-home-2", count: 175 },
+  { name: "Treehouses", slug: "treehouse", icon: "lni lni-tree-2", count: 20 },
+  { name: "Heritage Stays", slug: "heritage", icon: "lni lni-buildings-1", count: 45 },
+  { name: "Glamping", slug: "glamping", icon: "lni lni-flag-1", count: 30 },
 ];
 
 export const testimonials = [

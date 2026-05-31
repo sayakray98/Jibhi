@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
-import banner1 from "../../assets/images/banner1.webp";
-import banner2 from "../../assets/images/banner2.webp";
-import banner3 from "../../assets/images/banner3.webp";
+import banner1 from "../../assets/images/file_162.webp";
+import banner2 from "../../assets/images/file_130.webp";
+import banner3 from "../../assets/images/file_250.webp";
 
 import "swiper/css";
 import "swiper/css/navigation";
@@ -492,7 +492,7 @@ export default function Home() {
             </div>
             <div className="col-lg-4">
               <div className="texts text-end">
-                <a href=""><i class="lni lni-telephone-1"></i> <h6>Request Callback</h6></a>
+                <a href=""><i className="lni lni-telephone-1"></i> <h6>Request Callback</h6></a>
               </div>
             </div>
           </div>

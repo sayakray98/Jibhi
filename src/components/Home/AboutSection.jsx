@@ -1,4 +1,4 @@
-﻿import React from "react";
+import React from "react";
 import "./AboutSection.css";
 
 const WHY_CHOOSE = [
@@ -43,12 +43,12 @@ const WHY_CHOOSE = [
 ];
 
 const ATTRACTIONS = [
-  { name: "Jibhi Waterfall", distance: "1.5 km", icon: "💧" },
-  { name: "Serolsar Lake", distance: "5 km trek", icon: "🏔️" },
-  { name: "Jalori Pass", distance: "11 km", icon: "⛰️" },
-  { name: "Tirthan Valley", distance: "15 km", icon: "🏞️" },
-  { name: "Great Himalayan National Park", distance: "25 km", icon: "🌲" },
-  { name: "Chehni Kothi", distance: "8 km", icon: "🏰" },
+  { name: "Jibhi Waterfall", distance: "1.5 km", icon: "lni lni-water-drop-1" },
+  { name: "Serolsar Lake", distance: "5 km trek", icon: "lni lni-mountains-2" },
+  { name: "Jalori Pass", distance: "11 km", icon: "lni lni-road-1" },
+  { name: "Tirthan Valley", distance: "15 km", icon: "lni lni-trees-3" },
+  { name: "Great Himalayan National Park", distance: "25 km", icon: "lni lni-leaf-1" },
+  { name: "Chehni Kothi", distance: "8 km", icon: "lni lni-buildings-1" },
 ];
 
 export default function AboutSection() {
@@ -162,7 +162,7 @@ export default function AboutSection() {
           <div className="attractions__grid">
             {ATTRACTIONS.map((a) => (
               <div key={a.name} className="attractions__card">
-                <span className="attractions__emoji">{a.icon}</span>
+                <span className="attractions__emoji"><i className={a.icon}></i></span>
                 <div className="attractions__info">
                   <h4 className="attractions__name">{a.name}</h4>
                   <span className="attractions__dist">{a.distance}</span>

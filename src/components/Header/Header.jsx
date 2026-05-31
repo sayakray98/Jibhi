@@ -5,10 +5,10 @@ import { properties } from "../../data/properties";
 import "./Header.css";
 
 const ABOUT_ITEMS = [
-  { label: "About Jibhi", icon: "🏔️", to: "/#about-jibhi" },
-  { label: "About the Resort", icon: "🏡", to: "/#about-resort" },
-  { label: "Why Choose Us", icon: "⭐", to: "/#why-choose" },
-  { label: "Nearby Attractions", icon: "📍", to: "/#attractions" },
+  { label: "About Jibhi", icon: "lni lni-mountains-2", to: "/#about-jibhi" },
+  { label: "About the Resort", icon: "lni lni-home-2", to: "/#about-resort" },
+  { label: "Why Choose Us", icon: "lni lni-star-fat", to: "/#why-choose" },
+  { label: "Nearby Attractions", icon: "lni lni-map-marker-1", to: "/#attractions" },
 ];
 
 const megaMenuProperties = properties.slice(0, 3);
@@ -142,7 +142,7 @@ export default function Header() {
                         className="header__dropdown-item"
                         onClick={(e) => handleAnchorClick(e, hash)}
                       >
-                        <span className="header__dropdown-icon">{item.icon}</span>
+                        <span className="header__dropdown-icon"><i className={item.icon}></i></span>
                         <span className="header__dropdown-label">{item.label}</span>
                       </NavLink>
                     );
@@ -356,7 +356,7 @@ export default function Header() {
                         setMobileOpen(false);
                       }}
                     >
-                      <span className="header__mobile-sub-icon">{item.icon}</span>
+                      <span className="header__mobile-sub-icon"><i className={item.icon}></i></span>
                       {item.label}
                     </NavLink>
                   );
