@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
-import banner1 from "../../assets/images/file_162.webp";
-import banner2 from "../../assets/images/file_130.webp";
+import banner1 from "../../assets/images/file_28.webp";
+import banner2 from "../../assets/images/file_39.webp";
 import banner3 from "../../assets/images/file_250.webp";
 
 import "swiper/css";
@@ -306,15 +306,15 @@ export default function Home() {
       </div>
 
       {/* ── Booking Bar ── */}
-      <section className="booking">
-        <div className="booking-bar-wrapper" ref={barRef}>
+      {/* <section className="booking">
+        <div className="booking-bar-wrapper" ref={barRef}> */}
         
 
         
-          <div className="booking-bar">
+          {/* <div className="booking-bar"> */}
 
             {/* ── Location field ── */}
-            <div className="bb-field-wrap">
+            {/* <div className="bb-field-wrap">
               <label className="bb-label" htmlFor="bb-location">Location / Villas / Landmark</label>
               <div className={`bb-input-box${locOpen ? " bb-input-box--focus" : ""}`} onClick={openLoc}>
                 {locOpen ? (
@@ -335,10 +335,10 @@ export default function Home() {
                   </span>
                 )}
               </div>
-            </div>
+            </div> */}
 
             {/* ── Check-in ── */}
-            <div className="bb-field-wrap">
+            {/* <div className="bb-field-wrap">
               <label className="bb-label" htmlFor="bb-checkin">Check-in</label>
               <div
                 className={`bb-input-box${calOpen ? " bb-input-box--focus" : ""}`}
@@ -349,10 +349,10 @@ export default function Home() {
                   {rangeStart ? fmtDate(rangeStart) : "Select Date"}
                 </span>
               </div>
-            </div>
+            </div> */}
 
             {/* ── Check-out ── */}
-            <div className="bb-field-wrap">
+            {/* <div className="bb-field-wrap">
               <label className="bb-label" htmlFor="bb-checkout">Check-out</label>
               <div
                 className={`bb-input-box${calOpen ? " bb-input-box--focus" : ""}`}
@@ -363,10 +363,10 @@ export default function Home() {
                   {rangeEnd ? fmtDate(rangeEnd) : "Select Date"}
                 </span>
               </div>
-            </div>
+            </div> */}
 
             {/* ── Guests ── */}
-            <div className="bb-field-wrap">
+            {/* <div className="bb-field-wrap">
               <label className="bb-label" htmlFor="bb-guests">Guests</label>
               <div
                 className={`bb-input-box${guestOpen ? " bb-input-box--focus" : ""}`}
@@ -377,27 +377,27 @@ export default function Home() {
                   {guestLabel}
                 </span>
               </div>
-            </div>
+            </div> */}
 
-            <button className="bb-search">SEARCH</button>
-          </div>
+            {/* <button className="bb-search">SEARCH</button>
+          </div> */}
 
           {/* ── Location dropdown ── */}
-          {locOpen && (
+          {/* {locOpen && (
             <div className="loc-popup">
               {/* Near Me */}
-              <div className="loc-nearme" onClick={() => pickLocation("Near Me")}>
+              {/* <div className="loc-nearme" onClick={() => pickLocation("Near Me")}>
                 <span className="loc-nearme-icon"><IconLocate /></span>
                 <div className="loc-nearme-text">
                   <span className="loc-nearme-title">Use Current Location</span>
                   <span className="loc-nearme-sub">Near Me</span>
                 </div>
-              </div>
-
-              <div className="loc-separator" />
+              </div> */}
+{/* 
+              <div className="loc-separator" /> */} 
 
               {/* List */}
-              <div className="loc-list">
+              {/* <div className="loc-list">
                 {filteredLocations.length === 0 && (
                   <div className="loc-empty">No results found</div>
                 )}
@@ -414,10 +414,10 @@ export default function Home() {
                 ))}
               </div>
             </div>
-          )}
+          )} */}
 
           {/* ── Calendar popup ── */}
-          {calOpen && (
+          {/* {calOpen && (
             <div className="cal-popup">
               <div className="cal-months">
                 <CalendarMonth
@@ -445,10 +445,10 @@ export default function Home() {
                 </button>
               </div>
             </div>
-          )}
+          )} */}
 
           {/* ── Guests popup ── */}
-          {guestOpen && (
+          {/* {guestOpen && (
             <div className="guest-popup">
               <GuestRow label="Adults" sub="Age 13 years and more"
                 value={tmpAdults} min={1}
@@ -481,31 +481,32 @@ export default function Home() {
             </div>
           )}
         </div>
-       
-        <div className="booking-wrapper-below">
-          <div className="container booking-below">
-          <div className="row">
-            <div className="col-lg-8">
-              <div className="texts text-start">
-                <h6>Finding your ideal vacation spot should be easy, we're here to help!</h6>
-              </div>
-            </div>
-            <div className="col-lg-4">
-              <div className="texts text-end">
-                <a href=""><i className="lni lni-telephone-1"></i> <h6>Request Callback</h6></a>
-              </div>
-            </div>
-          </div>
-        </div>
-         </div>
-       </section>
+        */}
+      {/* //   <div className="booking-wrapper-below">
+      //     <div className="container booking-below">
+      //     <div className="row">
+      //       <div className="col-lg-8">
+      //         <div className="texts text-start">
+      //           <h6>Finding your ideal vacation spot should be easy, we're here to help!</h6>
+      //         </div>
+      //       </div>
+      //       <div className="col-lg-4">
+      //         <div className="texts text-end">
+      //           <a href=""><i className="lni lni-telephone-1"></i> <h6>Request Callback</h6></a>
+      //         </div>
+      //       </div>
+      //     </div>
+      //   </div>
+      //    </div> */}
+      {/* //  </section> */}
 
       {/* ── Home Sections ── */}
-      <AboutSection />
-      <PickDestination />
       <FeaturedCollections />
+      <AboutSection />
+      {/* <PickDestination /> */}
+      
       <PropertyCarousel />
-      <Categories />
+      {/* <Categories /> */}
       <Testimonials />
       <Newsletter />
     </>

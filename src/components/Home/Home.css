@@ -7,7 +7,7 @@
   width: 100%;
   position: relative;
   height: 500px;
-  transform: translateY(-75px);
+  /* transform: translateY(-75px); */
 }
 
 .homeSwiper {
