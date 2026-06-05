@@ -1,6 +1,18 @@
-﻿import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { NavLink, useSearchParams } from "react-router-dom";
+import emailjs from "@emailjs/browser";
 import "./Contact.css";
+
+// ──────────────────────────────────────────────────────────────────
+// EmailJS Configuration — Get these from https://www.emailjs.com
+// 1. Create free account → connect your Gmail (selvanaretreat@gmail.com)
+// 2. Create an Email Service (Gmail) → copy the Service ID
+// 3. Create an Email Template → copy the Template ID
+// 4. Go to Account → copy the Public Key
+// ──────────────────────────────────────────────────────────────────
+const EMAILJS_SERVICE_ID  = "service_quv0kxg";
+const EMAILJS_TEMPLATE_ID = "template_q6bgsfp";
+const EMAILJS_PUBLIC_KEY  = "KY7h0GU5zF2WyLNqL";
 
 const FAQS = [
   { q: "What is the check-in and check-out time?", a: "Standard check-in is 2:00 PM and check-out is 11:00 AM. Early check-in and late check-out can be arranged on request, subject to availability." },
@@ -47,17 +59,90 @@ const INFO_CARDS = [
 ];
 
 export default function Contact() {
+  const [searchParams, setSearchParams] = useSearchParams();
   const [form, setForm] = useState({ name: "", email: "", phone: "", subject: "", message: "" });
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState("");
   const [openFaq, setOpenFaq] = useState(null);
 
-  const handle = e => setForm(f => ({ ...f, [e.target.name]: e.target.value }));
+  // Package booking info from query params
+  const packageName = searchParams.get("package");
+  const packageDuration = searchParams.get("duration");
+  const packagePrice = searchParams.get("price");
+  const isBookingEnquiry = !!packageName;
 
-  const submit = e => {
+  // Pre-fill form when arriving from a package booking
+  useEffect(() => {
+    if (isBookingEnquiry) {
+      const priceFormatted = packagePrice
+        ? `₹${Number(packagePrice).toLocaleString("en-IN")}`
+        : "";
+      setForm((f) => ({
+        ...f,
+        subject: "booking",
+        message: `Hi, I am interested in booking the "${packageName}" package (${packageDuration}, ${priceFormatted}/person). Please share availability and further details.\n\nPreferred dates: \nNumber of guests: `,
+      }));
+    }
+  }, []);
+
+  const handle = (e) => setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
+
+  const clearBookingParams = () => {
+    setSearchParams({}, { replace: true });
+  };
+
+  const submit = async (e) => {
     e.preventDefault();
-    setSent(true);
-    setForm({ name:"", email:"", phone:"", subject:"", message:"" });
-    setTimeout(() => setSent(false), 5000);
+    setSending(true);
+    setError("");
+
+    // Build the subject label
+    const SUBJECT_LABELS = {
+      booking: "Booking Enquiry",
+      properties: "Property Information",
+      packages: "Package Details",
+      listing: "List My Property",
+      complaint: "Complaint / Feedback",
+      other: "Other",
+    };
+    const subjectLabel = SUBJECT_LABELS[form.subject] || form.subject;
+
+    // Build package info string for the email template
+    let packageInfo = "";
+    if (packageName) {
+      const priceFormatted = packagePrice
+        ? `₹${Number(packagePrice).toLocaleString("en-IN")}/person`
+        : "N/A";
+      packageInfo = `Package: ${packageName} | Duration: ${packageDuration || "N/A"} | Price: ${priceFormatted}`;
+    }
+
+    try {
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        {
+          from_name: form.name,
+          from_email: form.email,
+          phone: form.phone || "Not provided",
+          subject: subjectLabel,
+          message: form.message,
+          package_info: packageInfo,
+        },
+        EMAILJS_PUBLIC_KEY
+      );
+
+      setSent(true);
+      setForm({ name: "", email: "", phone: "", subject: "", message: "" });
+      clearBookingParams();
+      setTimeout(() => setSent(false), 6000);
+    } catch (err) {
+      console.error("EmailJS error:", err);
+      setError("Failed to send message. Please try again or contact us directly.");
+      setTimeout(() => setError(""), 6000);
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -102,10 +187,48 @@ export default function Contact() {
             <h2 className="contact-form-wrap__title">Send Us a Message</h2>
             <p className="contact-form-wrap__sub">Fill in the form below and our team will get back to you within 24 hours.</p>
 
+            {/* Package Booking Banner */}
+            {isBookingEnquiry && !sent && (
+              <div className="contact-booking-banner">
+                <div className="contact-booking-banner__icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                    <line x1="16" y1="2" x2="16" y2="6"/>
+                    <line x1="8" y1="2" x2="8" y2="6"/>
+                    <line x1="3" y1="10" x2="21" y2="10"/>
+                  </svg>
+                </div>
+                <div className="contact-booking-banner__content">
+                  <span className="contact-booking-banner__label">Booking Enquiry</span>
+                  <span className="contact-booking-banner__pkg">{packageName}</span>
+                  <span className="contact-booking-banner__meta">
+                    {packageDuration} · ₹{Number(packagePrice).toLocaleString("en-IN")}/person
+                  </span>
+                </div>
+                <button className="contact-booking-banner__close" onClick={clearBookingParams} title="Clear package selection">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"/>
+                    <line x1="6" y1="6" x2="18" y2="18"/>
+                  </svg>
+                </button>
+              </div>
+            )}
+
             {sent && (
               <div className="contact-success">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1a7a5e" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                Message sent! We'll get back to you soon.
+                Message sent successfully! We'll get back to you soon.
+              </div>
+            )}
+
+            {error && (
+              <div className="contact-error">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#c0392b" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="12" r="10"/>
+                  <line x1="15" y1="9" x2="9" y2="15"/>
+                  <line x1="9" y1="9" x2="15" y2="15"/>
+                </svg>
+                {error}
               </div>
             )}
 
@@ -143,11 +266,20 @@ export default function Contact() {
                 <textarea name="message" value={form.message} onChange={handle}
                   placeholder="Tell us how we can help you…" rows={5} required />
               </div>
-              <button type="submit" className="contact-form__submit">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
-                </svg>
-                Send Message
+              <button type="submit" className={`contact-form__submit${sending ? " contact-form__submit--sending" : ""}`} disabled={sending}>
+                {sending ? (
+                  <>
+                    <span className="contact-form__spinner"></span>
+                    Sending…
+                  </>
+                ) : (
+                  <>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                    </svg>
+                    Send Message
+                  </>
+                )}
               </button>
             </form>
           </div>

@@ -1,9 +1,20 @@
-﻿import React from "react";
-import { NavLink } from "react-router-dom";
+import React from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 import { packages } from "../../data/properties";
 import "./Packages.css";
 
 export default function Packages() {
+  const navigate = useNavigate();
+
+  const handleBookNow = (pkg) => {
+    const params = new URLSearchParams({
+      package: pkg.name,
+      duration: pkg.duration,
+      price: pkg.price.toString(),
+    });
+    navigate(`/contact?${params.toString()}`);
+  };
+
   return (
     <div className="packages-page">
       {/* Hero */}
@@ -72,7 +83,7 @@ export default function Packages() {
                     </ul>
                   </div>
 
-                  <button className="package-card__cta">Book Now</button>
+                  <button className="package-card__cta" onClick={() => handleBookNow(pkg)}>Book Now</button>
                 </div>
               </div>
             ))}

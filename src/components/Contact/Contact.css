@@ -1,4 +1,4 @@
-﻿/* ═══ Contact Page ═══ */
+/* ═══ Contact Page ═══ */
 
 /* Hero */
 .contact-hero {
@@ -83,6 +83,75 @@
   margin-bottom: 20px; font-size: 0.9rem;
 }
 
+.contact-error {
+  display: flex; align-items: center; gap: 10px;
+  background: #fce8e6; border: 1.5px solid #e8a9a3;
+  color: #6b1f1f; padding: 14px 18px;
+  border-radius: 10px; font-weight: 500;
+  margin-bottom: 20px; font-size: 0.9rem;
+}
+
+/* Booking Banner */
+.contact-booking-banner {
+  display: flex; align-items: center; gap: 16px;
+  background: linear-gradient(135deg, #1F3A36 0%, #2a524c 100%);
+  border-radius: 14px; padding: 18px 20px;
+  margin-bottom: 24px; position: relative;
+  overflow: hidden;
+  animation: bannerSlideIn 0.4s ease-out;
+}
+.contact-booking-banner::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(
+    120deg,
+    transparent,
+    transparent 30px,
+    rgba(220,199,170,0.04) 30px,
+    rgba(220,199,170,0.04) 60px
+  );
+}
+@keyframes bannerSlideIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.contact-booking-banner__icon {
+  width: 44px; height: 44px; border-radius: 10px;
+  background: rgba(220,199,170,0.15);
+  display: flex; align-items: center; justify-content: center;
+  color: #DCC7AA; flex-shrink: 0;
+  position: relative; z-index: 1;
+}
+.contact-booking-banner__content {
+  display: flex; flex-direction: column; gap: 3px;
+  min-width: 0; flex: 1;
+  position: relative; z-index: 1;
+}
+.contact-booking-banner__label {
+  font-size: 0.68rem; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: #DCC7AA;
+}
+.contact-booking-banner__pkg {
+  font-family: 'LarkenMedium', serif;
+  font-size: 1.1rem; color: #fff; font-weight: 400;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.contact-booking-banner__meta {
+  font-size: 0.82rem; color: rgba(255,255,255,0.6);
+}
+.contact-booking-banner__close {
+  width: 30px; height: 30px; border-radius: 8px;
+  background: rgba(255,255,255,0.1); border: none;
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(255,255,255,0.5); cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  flex-shrink: 0; position: relative; z-index: 1;
+}
+.contact-booking-banner__close:hover {
+  background: rgba(255,255,255,0.2); color: #fff;
+}
+
 .contact-form { display: flex; flex-direction: column; gap: 18px; }
 .contact-form__row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
 .contact-form__field { display: flex; flex-direction: column; gap: 7px; }
@@ -113,9 +182,25 @@
   border: none; border-radius: 10px;
   font-size: 0.95rem; font-weight: 700;
   cursor: pointer; align-self: flex-start;
-  transition: background 0.2s, transform 0.2s;
+  transition: background 0.2s, transform 0.2s, opacity 0.2s;
 }
 .contact-form__submit:hover { background: #c4ad90; transform: translateY(-2px); }
+.contact-form__submit--sending {
+  opacity: 0.7; cursor: not-allowed;
+}
+.contact-form__submit--sending:hover { transform: none; }
+
+/* Spinner */
+.contact-form__spinner {
+  width: 18px; height: 18px;
+  border: 2.5px solid rgba(255,255,255,0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: contactSpin 0.7s linear infinite;
+}
+@keyframes contactSpin {
+  to { transform: rotate(360deg); }
+}
 
 /* Side */
 .contact-side { display: flex; flex-direction: column; gap: 20px; }
